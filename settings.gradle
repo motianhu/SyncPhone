@@ -1,2 +1,2 @@
-include ':app'
+include ':app', 'httpwrapper', "http"
 rootProject.name = "SyncPhone"

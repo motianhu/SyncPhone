@@ -26,6 +26,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
 }
 
 dependencies {
@@ -33,6 +38,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -40,4 +46,22 @@ dependencies {
     implementation 'com.github.hotchemi:permissionsdispatcher:3.0.1'
     annotationProcessor 'com.github.hotchemi:permissionsdispatcher-processor:3.0.1'
 
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation 'androidx.room:room-runtime:2.2.5'
+    implementation 'androidx.work:work-runtime:2.3.4'
+    annotationProcessor 'androidx.room:room-compiler:2.2.5'
+
+    implementation project(':httpwrapper')
+
+    implementation RXJAVA
+    implementation RXANDROID
+    implementation OKHTTP
+    implementation RETROFIT
+    implementation GSON
+    implementation CONVERTER_GSON
+    implementation RXLIFECYCLE
+    implementation RXLIFECYCLE_COMPONENT
 }
