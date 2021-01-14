@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         input_account = findViewById(R.id.input_account);
         input_password = findViewById(R.id.input_password);
         //http://tools.zsliangxiangshe.com/openapi/pull-verify-data
+        requestPermission();
     }
 
     private List<PhoneBean> getLocalPhone() {
@@ -104,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 if (dataList == null || dataList.size() == 0) {
                     return;
                 }
+                //insertContacts(false, page, account, password, dataList);
                 insertContacts(phoneListBaseResponse.data.isHasNext(), page, account, password, dataList);
             }
 
@@ -125,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
                     if(hasNext) {
                         requestPhoneList(page + 1, account, password);
                     } else {
+                        Log.e("motianhu", "插入 " + ((page - 1) * 500 + dataList.size()));
                         showToast("数据插入完成");
                     }
                 } else {
@@ -142,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
         return isFinishing() || isDestroyed();
     }
 
-    private void addContact() {
+    private void requestPermission() {
         if (hasDeniedPermission(this, getPermissions())) {
             ActivityCompat.requestPermissions(this, getPermissions(), 10);
         }
